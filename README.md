@@ -1,52 +1,104 @@
-# CPSC 310 Project Repository
+# DataLens — Job Market Analytics Platform
 
-This repository contains starter code for the class project.
-Please keep your repository private.
+A full-stack analytics platform for exploring job market data. Upload job listing datasets, query them through a custom-built query engine, and visualize salary benchmarks, hiring competition, and opportunity analysis across industries and companies.
 
-For information about the project, autotest, and the checkpoints, see the course webpage.
+## Tech Stack
 
-## Configuring your environment
+- **Backend**: TypeScript, Node.js, Express.js
+- **Frontend**: React, Vite, Recharts
+- **Auth**: JWT (jsonwebtoken) + per-IP rate limiting
+- **Data**: ZIP ingestion pipeline, file system JSON persistence
 
-To start using this project, you need to get your development environment configured so that you can build and execute the code.
-To do this, follow these steps; the specifics of each step will vary based on your operating system:
+## Features
 
-1. [Install git](https://git-scm.com/downloads) (v2.X). You should be able to execute `git --version` on the command line after installation is complete.
+- Custom JSON query engine supporting WHERE / GROUP BY / APPLY / ORDER operations
+- LRU cache for query results with SHA-256 keys and TTL invalidation
+- JWT authentication + Express rate limiting middleware
+- Three analytics views:
+  - **Salary Benchmark** — compare pay for the same role across companies
+  - **Competition Index** — acceptance rate (openings ÷ applicants) per company
+  - **Best Opportunities** — scatter plot of salary vs acceptance rate to find the sweet spot
+- Real data ingestion via RemoteOK public API and BeautifulSoup scraper
+- Docker + docker-compose support
+- GitHub Actions CI pipeline
 
-1. [Install Node (Current)](https://nodejs.org/en/download/) (Current: v24.X), which will also install NPM (you should be able to execute `node --version` and `npm --version` on the command line).
+## Getting Started
 
-1. [Install Yarn](https://yarnpkg.com/en/docs/install) (1.22.X). You should be able to execute `yarn --version`.
+### Prerequisites
 
-1. Clone your repository by running `git clone REPO_URL` from the command line. You can get the REPO_URL by clicking on the green button on your project repository page on GitHub. Note that due to new department changes you can no longer access private git resources using https and a username and password. You will need to use either [an access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) or [SSH](https://help.github.com/en/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account).
+- Node.js v24+
+- Yarn v1.22+
+- Python 3 (for data scripts)
 
-## Project commands
+### 1. Install dependencies
 
-Once your environment is configured you need to further prepare the project's tooling and dependencies.
-In the project folder:
+```bash
+# Backend
+yarn install
 
-1. `yarn install` to download the packages specified in your project's *package.json* to the *node_modules* directory.
+# Frontend
+cd frontend/public/my-app
+npm install
+```
 
-1. `yarn build` to compile your project. You must run this command after making changes to your TypeScript files. If it does not build locally, AutoTest will not be able to build it. This will also run formatting. *If you would like to enable linting, remove `.disabled` from the `eslint.config.mjs.disabled` file and run `yarn build:lint` instead!*
+### 2. Start the backend
 
-1. `yarn test` to run the test suite.
-    - To run with coverage, run `yarn cover`
+```bash
+yarn start
+# Server runs on http://localhost:1220
+```
 
-1. `yarn prettier:fix` to format your project code.
+### 3. Load data
 
-1. `yarn lint:check` to see lint errors in your project code. You may be able to fix some of them using the `yarn lint:fix` command.
+```bash
+# Option A: generate synthetic dataset (no network required)
+python3 scripts/generate_dataset.py
 
+# Option B: scrape real listings from RemoteOK
+python3 scripts/scrape_jobs.py --source remoteok
 
-If you are curious, some of these commands are actually shortcuts defined in [package.json -> scripts](./package.json).
+# Upload the dataset
+TOKEN=$(curl -s -X POST http://localhost:1220/auth/token \
+  -H "Content-Type: application/json" \
+  -d '{"apiKey":"datalens-dev-key"}' | python3 -c "import sys,json; print(json.load(sys.stdin)['token'])")
 
-## Running and testing from an IDE
+curl -X PUT "http://localhost:1220/api/v1/dataset/jobs" \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/zip" \
+  --data-binary @data/jobs_market.zip
+```
 
-IntelliJ Ultimate should be automatically configured the first time you open the project (IntelliJ Ultimate is a free download through the [JetBrains student program](https://www.jetbrains.com/community/education/#students/)).
+### 4. Start the frontend
 
-### License
+```bash
+cd frontend/public/my-app
+npm run dev
+# App runs on http://localhost:5173
+```
 
-While the readings for this course are licensed using [CC-by-SA](https://creativecommons.org/licenses/by-sa/3.0/), **checkpoint descriptions and implementations are considered private materials**. Please do not post or share your project solutions. We go to considerable lengths to make the project an interesting and useful learning experience for this course. This is a great deal of work, and while future students may be tempted by your solutions, posting them does not do them any real favours. Please be considerate with these private materials and not pass them along to others, make your repos public, or post them to other sites online.
+## API Overview
 
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/auth/token` | Get JWT token |
+| PUT | `/api/v1/dataset/:id` | Upload dataset ZIP |
+| DELETE | `/api/v1/dataset/:id` | Remove dataset |
+| GET | `/api/v1/datasets` | List all datasets |
+| POST | `/api/v1/query` | Run a custom query |
+| GET | `/api/v1/analytics/:id/industries` | List industries |
+| GET | `/api/v1/analytics/:id/salary-benchmark/:role` | Salary by company for a role |
+| GET | `/api/v1/analytics/:id/competition/:industry` | Acceptance rate by company |
 
-## How to use this web-app:
-- on root directory, run `npm start` to start the server (backend)
-- on `frontend\public\my-app`, run `npm run dev` to start the frontend
-- visit `http://localhost:5173/` to see the web-app
+## Docker
+
+```bash
+docker-compose up --build
+```
+
+## Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `PORT` | `1220` | Server port |
+| `JWT_SECRET` | `datalens-dev-secret` | JWT signing secret |
+| `API_KEY` | `datalens-dev-key` | API key for token endpoint |
