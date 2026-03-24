@@ -1,0 +1,26 @@
+{
+    "title": "test or operator",
+    "input": {
+        "WHERE": {
+          "OR": [
+            {
+              "GT": {
+                "sections_avg": 99
+              }
+            },
+            {
+              "IS": {
+                "sections_dept": "aan*"
+              }
+            }
+          ]
+        },
+        "OPTIONS": {
+          "COLUMNS": [
+            "sections_dept"
+          ]
+        }
+      },
+    "errorExpected": false,
+    "expected": [{"sections_dept":"aanb"},{"sections_dept":"aanb"},{"sections_dept":"aanb"},{"sections_dept":"aanb"},{"sections_dept":"cnps"},{"sections_dept":"math"},{"sections_dept":"math"}]
+}

@@ -1,0 +1,13 @@
+{
+    "title": "not object OP",
+    "input": {
+        "WHERE": {
+            "GT": {
+                "sections_avg": 97
+            }
+        },
+        "OPTIONS": null
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+}

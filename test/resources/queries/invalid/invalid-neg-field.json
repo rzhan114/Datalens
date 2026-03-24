@@ -1,0 +1,15 @@
+{
+    "title": "invalid neg field ",
+    "input": {
+        "WHERE": {
+            "NOT": {
+                "PPT": 97
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": ["sections_dept"]
+        }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+}

@@ -1,0 +1,15 @@
+{
+    "title": "query col not in dataset",
+    "input": {
+        "WHERE": {
+            "GT": {
+                "sections_avg": 97
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": ["PPT"]
+        }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+}

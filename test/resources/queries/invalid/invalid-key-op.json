@@ -1,0 +1,16 @@
+{
+    "title": "invalid key op",
+    "input": {
+        "WHERE": {
+            "GT": {
+                "sections_avg": 97
+            }
+        },
+        "OPTIONS": {
+            "PPT": ["sections_dept"],
+            "PPTS": ["sections_dept"]
+        }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+}

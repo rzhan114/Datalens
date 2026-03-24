@@ -1,0 +1,15 @@
+{
+    "title": "invalid col key",
+    "input": {
+        "WHERE": {
+            "GT": {
+                "sections_avg": 97
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": [null]
+        }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+}

@@ -1,0 +1,16 @@
+{
+	"title": "query invalid field",
+	"input": {
+        "WHERE": {
+            "GT": {
+                "sections_avg": 97
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": ["ppt","sections_dept"]
+        },
+        "ppt": "66"
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

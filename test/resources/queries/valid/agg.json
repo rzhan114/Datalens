@@ -1,0 +1,30 @@
+{
+    "title": "aggregation query test",
+    "input": {
+        "WHERE": {
+          "GT": {
+            "sections_avg": 98
+          }
+        },
+        "OPTIONS": {
+          "COLUMNS": [
+            "sections_title",
+            "overallAvg"
+          ]
+        },
+        "TRANSFORMATIONS": {
+          "GROUP": [
+            "sections_title"
+          ],
+          "APPLY": [
+            {
+              "overallAvg": {
+                "AVG": "sections_avg"
+              }
+            }
+          ]
+        }
+      },
+    "errorExpected": false,
+    "expected": [{"sections_title":"career planning","overallAvg":99.19},{"sections_title":"multimedia sys","overallAvg":98.75},{"sections_title":"assess lrn diffi","overallAvg":98.38},{"sections_title":"educ stds autism","overallAvg":98.7},{"sections_title":"dev el sk df&hrd","overallAvg":98.45},{"sections_title":"algb topology i","overallAvg":99.78},{"sections_title":"cl pro prim care","overallAvg":98.46},{"sections_title":"fam nrs pract","overallAvg":98.54},{"sections_title":"work int health","overallAvg":98.98}]
+}

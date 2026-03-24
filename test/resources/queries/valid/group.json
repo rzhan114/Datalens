@@ -1,0 +1,47 @@
+{
+	"title": "valid_group_apply",
+	"input": {
+		"WHERE": {
+		  "AND": [
+			{
+			  "IS": {
+				"rooms_furniture": "*es*"
+			  }
+			},
+			{
+			  "LT": {
+				"rooms_seats": 400
+			  }
+			}
+		  ]
+		},
+		"OPTIONS": {
+		  "COLUMNS": [
+			"rooms_shortname",
+			"rooms_lat",
+			"maxis"
+		  ],
+		  "ORDER": {
+			"dir": "DOWN",
+			"keys": [
+			  "rooms_lat"
+			]
+		  }
+		},
+		"TRANSFORMATIONS": {
+		  "GROUP": [
+			"rooms_shortname",
+			"rooms_lat"
+		  ],
+		  "APPLY": [
+			{
+			  "maxis": {
+				"SUM": "rooms_seats"
+			  }
+			}
+		  ]
+		}
+	  },
+	"errorExpected": false,
+	"expected": [{"rooms_shortname":"IONA","rooms_lat":49.27106,"maxis":150},{"rooms_shortname":"ALRD","rooms_lat":49.2699,"maxis":228},{"rooms_shortname":"ANSO","rooms_lat":49.26958,"maxis":96},{"rooms_shortname":"UCLL","rooms_lat":49.26867,"maxis":133},{"rooms_shortname":"BRKX","rooms_lat":49.26862,"maxis":94},{"rooms_shortname":"SRC","rooms_lat":49.2683,"maxis":897},{"rooms_shortname":"BUCH","rooms_lat":49.26826,"maxis":1473},{"rooms_shortname":"LASR","rooms_lat":49.26767,"maxis":120},{"rooms_shortname":"IBLC","rooms_lat":49.26766,"maxis":538},{"rooms_shortname":"AUDX","rooms_lat":49.2666,"maxis":41},{"rooms_shortname":"MATH","rooms_lat":49.266463,"maxis":156},{"rooms_shortname":"HENN","rooms_lat":49.26627,"maxis":96},{"rooms_shortname":"HEBB","rooms_lat":49.2661,"maxis":537},{"rooms_shortname":"GEOG","rooms_lat":49.26605,"maxis":394},{"rooms_shortname":"LSK","rooms_lat":49.26545,"maxis":505},{"rooms_shortname":"FRDM","rooms_lat":49.26541,"maxis":160},{"rooms_shortname":"ANGU","rooms_lat":49.26486,"maxis":1546},{"rooms_shortname":"BIOL","rooms_lat":49.26479,"maxis":108},{"rooms_shortname":"WOOD","rooms_lat":49.26478,"maxis":592},{"rooms_shortname":"SOWK","rooms_lat":49.2643,"maxis":44},{"rooms_shortname":"SPPH","rooms_lat":49.2642,"maxis":166},{"rooms_shortname":"FNH","rooms_lat":49.26414,"maxis":28},{"rooms_shortname":"PCOH","rooms_lat":49.264,"maxis":216},{"rooms_shortname":"SCRF","rooms_lat":49.26398,"maxis":724},{"rooms_shortname":"SWNG","rooms_lat":49.26293,"maxis":1421},{"rooms_shortname":"ESB","rooms_lat":49.26274,"maxis":80},{"rooms_shortname":"CEME","rooms_lat":49.26273,"maxis":289},{"rooms_shortname":"LSC","rooms_lat":49.26236,"maxis":825},{"rooms_shortname":"PHRM","rooms_lat":49.26229,"maxis":538},{"rooms_shortname":"CHBE","rooms_lat":49.26228,"maxis":354},{"rooms_shortname":"EOSM","rooms_lat":49.26228,"maxis":50},{"rooms_shortname":"FORW","rooms_lat":49.26176,"maxis":142},{"rooms_shortname":"MCLD","rooms_lat":49.26176,"maxis":503},{"rooms_shortname":"DMP","rooms_lat":49.26125,"maxis":440},{"rooms_shortname":"MCML","rooms_lat":49.26114,"maxis":299},{"rooms_shortname":"ORCH","rooms_lat":49.26048,"maxis":263},{"rooms_shortname":"OSBO","rooms_lat":49.26047,"maxis":40},{"rooms_shortname":"FSC","rooms_lat":49.26044,"maxis":272}]
+}

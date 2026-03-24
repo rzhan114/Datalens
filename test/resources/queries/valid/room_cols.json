@@ -1,0 +1,27 @@
+{
+    "title": "room cols",
+    "input": {
+        "WHERE": {
+          "IS": {
+            "rooms_shortname":"ALRD"
+          }
+          
+        },
+        "OPTIONS": {
+          "COLUMNS": [
+            "rooms_fullname",
+            "rooms_shortname",
+            "rooms_number",
+            "rooms_address",
+            "rooms_lat",
+            "rooms_lon",
+            "rooms_seats",
+            "rooms_type",
+            "rooms_furniture",
+            "rooms_href"
+          ]
+        }
+      },
+    "errorExpected": false,
+    "expected": [{"rooms_fullname":"Allard Hall (LAW)","rooms_shortname":"ALRD","rooms_number":"105","rooms_address":"1822 East Mall","rooms_lat":49.2699,"rooms_lon":-123.25318,"rooms_seats":94,"rooms_type":"Case Style","rooms_furniture":"Classroom-Fixed Tables/Movable Chairs","rooms_href":"http://students.ubc.ca/campus/discover/buildings-and-classrooms/room/ALRD-105"},{"rooms_fullname":"Allard Hall (LAW)","rooms_shortname":"ALRD","rooms_number":"112","rooms_address":"1822 East Mall","rooms_lat":49.2699,"rooms_lon":-123.25318,"rooms_seats":20,"rooms_type":"Open Design General Purpose","rooms_furniture":"Classroom-Movable Tables & Chairs","rooms_href":"http://students.ubc.ca/campus/discover/buildings-and-classrooms/room/ALRD-112"},{"rooms_fullname":"Allard Hall (LAW)","rooms_shortname":"ALRD","rooms_number":"113","rooms_address":"1822 East Mall","rooms_lat":49.2699,"rooms_lon":-123.25318,"rooms_seats":20,"rooms_type":"Open Design General Purpose","rooms_furniture":"Classroom-Movable Tables & Chairs","rooms_href":"http://students.ubc.ca/campus/discover/buildings-and-classrooms/room/ALRD-113"},{"rooms_fullname":"Allard Hall (LAW)","rooms_shortname":"ALRD","rooms_number":"121","rooms_address":"1822 East Mall","rooms_lat":49.2699,"rooms_lon":-123.25318,"rooms_seats":50,"rooms_type":"Case Style","rooms_furniture":"Classroom-Fixed Tables/Movable Chairs","rooms_href":"http://students.ubc.ca/campus/discover/buildings-and-classrooms/room/ALRD-121"},{"rooms_fullname":"Allard Hall (LAW)","rooms_shortname":"ALRD","rooms_number":"B101","rooms_address":"1822 East Mall","rooms_lat":49.2699,"rooms_lon":-123.25318,"rooms_seats":44,"rooms_type":"Open Design General Purpose","rooms_furniture":"Classroom-Fixed Tables/Movable Chairs","rooms_href":"http://students.ubc.ca/campus/discover/buildings-and-classrooms/room/ALRD-B101"}]
+}

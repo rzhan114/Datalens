@@ -1,0 +1,17 @@
+{
+    "title": "invalid field for lc",
+    "input": {
+        "WHERE": {
+            "AND" : [
+                {
+                    "PPT": 66
+                }
+            ]
+        },
+        "OPTIONS": {
+            "COLUMNS": ["sections_dept"]
+        }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+}

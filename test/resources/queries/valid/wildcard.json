@@ -1,0 +1,31 @@
+{
+    "title": "departments starting with 'c'",
+    "input": {
+        "WHERE": {
+          "AND": [
+            {
+              "GT": {
+                "sections_avg": 94
+              }
+            },
+            {
+              "IS": {
+                "sections_dept": "cpsc*"
+              }
+            }
+          ]
+        },
+        "OPTIONS": {
+          "COLUMNS": [
+            "sections_dept"
+          ]
+        }
+      },
+    "errorExpected": false,
+    "expected": [
+        {"sections_dept": "cpsc"},
+        {"sections_dept": "cpsc"},
+        {"sections_dept": "cpsc"},
+        {"sections_dept": "cpsc"}
+    ]
+}

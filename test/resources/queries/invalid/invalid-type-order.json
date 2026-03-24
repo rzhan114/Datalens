@@ -1,0 +1,16 @@
+{
+    "title": "invalid type order",
+    "input": {
+        "WHERE": {
+            "GT": {
+                "sections_avg": 97
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": ["sections_dept"],
+            "ORDER": null
+        }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+}

@@ -1,0 +1,13 @@
+{
+    "title": "not object MC",
+    "input": {
+        "WHERE": {
+            "GT": null
+        },
+        "OPTIONS": {
+            "COLUMNS": ["sections_dept"]
+        }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+}

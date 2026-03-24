@@ -1,0 +1,10 @@
+{
+    "title": "empty and filter",
+    "input": {
+      "WHERE": { "AND": [ {} ] },
+      "OPTIONS": { "COLUMNS": ["sections_dept"] }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+  }
+  

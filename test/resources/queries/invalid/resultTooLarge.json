@@ -1,0 +1,12 @@
+{
+    "title": "result too large",
+    "input": {
+        
+            "WHERE":{},
+            "OPTIONS":{"COLUMNS":["sections_dept"]}
+             
+        
+    },
+    "errorExpected": true,
+    "expected": "ResultTooLargeError"
+}

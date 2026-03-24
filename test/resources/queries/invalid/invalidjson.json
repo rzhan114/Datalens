@@ -1,0 +1,6 @@
+{
+    "title": "invalid json",
+    "input" : "66",
+    "errorExpected": true,
+	"expected": "InsightError"
+}

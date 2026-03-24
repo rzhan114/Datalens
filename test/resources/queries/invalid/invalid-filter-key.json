@@ -1,0 +1,15 @@
+{
+    "title": "invalid options",
+    "input": {
+        "WHERE": {
+            "PPT": {
+                "sections_avg": 97
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": ["sections_dept"]
+        }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+}

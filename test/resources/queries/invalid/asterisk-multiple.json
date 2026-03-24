@@ -1,0 +1,17 @@
+{
+	"title": "multiple asterisks in mid",
+	"input": {
+		"WHERE": {
+			"IS": {
+				"sections_dept": "***"
+			}
+		},
+		"OPTIONS": {
+			"COLUMNS": [
+				"sections_dept"
+			]
+		}
+	},
+	"errorExpected": true,
+	"expected": "InsightError"
+}

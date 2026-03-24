@@ -1,0 +1,21 @@
+{
+    "title": "LT operator test",
+    "input": {
+        "WHERE": {
+          "LT":{
+            "sections_avg": 1
+          }
+          
+        },
+        "OPTIONS": {
+          "COLUMNS": [
+            "sections_dept"
+          ]
+        }
+      },
+    "errorExpected": false,
+    "expected": [
+        {"sections_dept":"frst"},{"sections_dept":"lfs"},{"sections_dept":"lfs"}
+    ] 
+
+}

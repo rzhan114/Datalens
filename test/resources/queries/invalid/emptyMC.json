@@ -1,0 +1,13 @@
+{
+    "title": "empty MC",
+    "input": {
+        "WHERE": {
+            "GT": {}
+        },
+        "OPTIONS": {
+            "COLUMNS": ["sections_dept"]
+        }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+}

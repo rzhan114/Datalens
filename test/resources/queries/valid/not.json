@@ -1,0 +1,23 @@
+{
+    "title": "NOT operator test",
+    "input": {
+        "WHERE": {
+          "NOT":{
+            "LT":
+            {
+              "sections_avg": 99.5
+            
+          }
+            
+          }
+          
+        },
+        "OPTIONS": {
+          "COLUMNS": [
+            "sections_dept"
+          ]
+        }
+      },
+    "errorExpected": false,
+    "expected": [{"sections_dept":"math"},{"sections_dept":"math"}]
+}

@@ -1,0 +1,12 @@
+{
+    "title": "invalid field for and",
+    "input": {
+        "WHERE": {
+            "AND": [ { "PPT": { "sections_avg": 90 } } ]
+        },
+        "OPTIONS": { "COLUMNS": ["sections_dept"] }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+  }
+  

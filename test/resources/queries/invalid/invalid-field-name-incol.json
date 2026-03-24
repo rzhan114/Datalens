@@ -1,0 +1,15 @@
+{
+    "title": "invalid field name in col",
+    "input": {
+        "WHERE": {
+            "IS": {
+                "sections_dept": "cpsc"
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": ["sections_ppt"]
+        }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+}

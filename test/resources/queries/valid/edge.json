@@ -1,0 +1,83 @@
+{
+    "title": "nested logic with string and numeric comparisons",
+    "input": {
+        "WHERE": {
+          "AND": [
+            {
+              "AND": [
+                {
+                  "LT": {
+                    "sections_avg": 90
+                  }
+                },
+                {
+                  "EQ": {
+                    "sections_year": 1900
+                  }
+                },
+                {
+                  "GT": {
+                    "sections_pass": 140
+                  }
+                },
+                {
+                  "IS": {
+                    "sections_dept": "a*"
+                  }
+                },
+                {
+                  "IS": {
+                    "sections_title": "**"
+                  }
+                },
+                {
+                  "IS": {
+                    "sections_dept": "*e"
+                  }
+                },
+               
+                {
+                  "IS": {
+                    "sections_title": "*"
+                  }
+                }
+              ]
+            },
+            {
+              "OR": [
+                {
+                  "NOT": {
+                    "LT": {
+                      "sections_avg": 90
+                    }
+                  }
+                },
+                {
+                  "NOT": {
+                    "AND": [
+                      {
+                        "LT": {
+                          "sections_fail": 10
+                        }
+                      },
+                      {
+                        "IS": {
+                          "sections_instructor": "*e*"
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "OPTIONS": {
+          "COLUMNS": [
+            "sections_dept"
+          ]
+        }
+      },
+    "errorExpected": false,
+    "expected": [{"sections_dept":"adhe"},{"sections_dept":"adhe"},{"sections_dept":"adhe"},{"sections_dept":"adhe"},{"sections_dept":"adhe"},{"sections_dept":"adhe"},{"sections_dept":"adhe"}]
+}

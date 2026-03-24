@@ -1,0 +1,41 @@
+{
+	"title": "valid_order_multiple_keys",
+	"input": {
+		"WHERE": {
+		  "GT": {
+			"rooms_seats": 300
+		  }
+		},
+		"OPTIONS": {
+		  "COLUMNS": [
+			"rooms_number",
+			"rooms_type",
+			"maxSeats"
+		  ],
+		  "ORDER": {
+			"dir": "UP",
+			"keys": [
+			  "rooms_number",
+			  "rooms_type",
+			  "maxSeats"
+			]
+		  }
+		},
+		"TRANSFORMATIONS": {
+		  "GROUP": [
+			"rooms_number",
+			"rooms_type"
+		  ],
+		  "APPLY": [
+			{
+			  "maxSeats": {
+				"MAX": "rooms_seats"
+			  }
+			}
+		  ]
+		}
+	  },
+	"errorExpected": false,
+	"expected":[{"rooms_number":"100","rooms_type":"Tiered Large Group","maxSeats":375},{"rooms_number":"1001","rooms_type":"Tiered Large Group","maxSeats":350},{"rooms_number":"1002","rooms_type":"Tiered Large Group","maxSeats":350},{"rooms_number":"1013","rooms_type":"Tiered Large Group","maxSeats":350},{"rooms_number":"1250","rooms_type":"Tiered Large Group","maxSeats":426},{"rooms_number":"2","rooms_type":"Tiered Large Group","maxSeats":503},{"rooms_number":"A","rooms_type":"Open Design General Purpose","maxSeats":442}]
+	
+}

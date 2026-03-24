@@ -1,0 +1,13 @@
+{
+    "title": "empty  neg",
+    "input": {
+        "WHERE": {
+            "NOT": {}
+        },
+        "OPTIONS": {
+            "COLUMNS": ["sections_dept"]
+        }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+}

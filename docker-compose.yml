@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  datalens:
+    build: .
+    container_name: datalens
+    ports:
+      - "1220:1220"
+    volumes:
+      # Persist uploaded datasets across container restarts
+      - datalens-data:/app/data
+    environment:
+      NODE_ENV: production
+      PORT: 1220
+      # Override these in a .env file or via `docker-compose --env-file`
+      JWT_SECRET: ${JWT_SECRET:-change-me-in-production}
+      API_KEY: ${API_KEY:-change-me-in-production}
+      CACHE_MAX_SIZE: ${CACHE_MAX_SIZE:-100}
+      RATE_LIMIT_MAX: ${RATE_LIMIT_MAX:-100}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:1220/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  datalens-data:

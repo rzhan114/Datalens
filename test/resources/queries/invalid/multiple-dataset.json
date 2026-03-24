@@ -1,0 +1,15 @@
+{
+    "title": "multiple dataset",
+    "input": {
+        "WHERE": {
+            "IS": {
+                "other_dept": "cpsc"
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": ["sections_avg"]
+        }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+}

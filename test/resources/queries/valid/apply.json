@@ -1,0 +1,54 @@
+{
+    "title": "use all apply tokens",
+    "input": {
+        "WHERE": {
+          "GT": {
+            "sections_avg": 98
+          }
+        },
+        "OPTIONS": {
+          "COLUMNS": [
+            "sections_title",
+            "overallAvg",
+            "overallSum",
+            "overallMax",
+            "overallMin",
+            "overallCount"
+          ]
+        },
+        "TRANSFORMATIONS": {
+          "GROUP": [
+            "sections_title"
+          ],
+          "APPLY": [
+            {
+              "overallAvg": {
+                "AVG": "sections_avg"
+              }
+            },
+            {
+              "overallCount": {
+                "COUNT": "sections_instructor"
+              }
+            },
+            {
+              "overallMax": {
+                "MAX": "sections_fail"
+              }
+            },
+            {
+              "overallMin": {
+                "MIN": "sections_pass"
+              }
+            },
+            {
+              "overallSum": {
+                "SUM": "sections_pass"
+              }
+            }
+          ]
+        }
+      },
+    "errorExpected": false,
+    "expected": [{"sections_title":"career planning","overallAvg":99.19,"overallSum":16,"overallMax":0,"overallMin":16,"overallCount":1},{"sections_title":"multimedia sys","overallAvg":98.75,"overallSum":24,"overallMax":0,"overallMin":12,"overallCount":2},{"sections_title":"assess lrn diffi","overallAvg":98.38,"overallSum":44,"overallMax":0,"overallMin":10,"overallCount":2},{"sections_title":"educ stds autism","overallAvg":98.7,"overallSum":107,"overallMax":0,"overallMin":17,"overallCount":2},{"sections_title":"dev el sk df&hrd","overallAvg":98.45,"overallSum":22,"overallMax":0,"overallMin":11,"overallCount":2},{"sections_title":"algb topology i","overallAvg":99.78,"overallSum":18,"overallMax":0,"overallMin":9,"overallCount":2},{"sections_title":"cl pro prim care","overallAvg":98.46,"overallSum":56,"overallMax":0,"overallMin":14,"overallCount":3},{"sections_title":"fam nrs pract","overallAvg":98.54,"overallSum":56,"overallMax":0,"overallMin":12,"overallCount":2},{"sections_title":"work int health","overallAvg":98.98,"overallSum":164,"overallMax":0,"overallMin":82,"overallCount":2}]
+}

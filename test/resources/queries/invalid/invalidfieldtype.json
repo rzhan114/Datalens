@@ -1,0 +1,15 @@
+{
+    "title": "invalid field type",
+    "input": {
+        "WHERE": {
+            "IS": {
+                "sections_avg": 97
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": ["ppt","sections_dept"]
+        }
+    },
+    "errorExpected": true,
+	"expected": "InsightError"
+}

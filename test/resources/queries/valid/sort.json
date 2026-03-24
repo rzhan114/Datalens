@@ -1,0 +1,95 @@
+{
+	"title": "valid_room_max_and_min_sort_by_all_columns",
+	"input": {
+		"WHERE": {
+		  "AND": [
+			{
+			  "IS": {
+				"rooms_shortname": "O*"
+			  }
+			},
+			{
+			  "OR": [
+				{
+				  "IS": {
+					"rooms_furniture": "*Tables*"
+				  }
+				},
+				{
+				  "GT": {
+					"rooms_seats": 400
+				  }
+				},
+				{
+				  "LT": {
+					"rooms_lat": -2
+				  }
+				}
+			  ]
+			}
+		  ]
+		},
+		"OPTIONS": {
+		  "COLUMNS": [
+			"rooms_shortname",
+			"maxSeats",
+			"minSeats",
+			"minLat",
+			"minLon",
+			"maxLat",
+			"maxLon"
+		  ],
+		  "ORDER": {
+			"dir": "DOWN",
+			"keys": [
+			  "rooms_shortname",
+			  "maxSeats",
+			  "minSeats",
+			  "minLat",
+			  "minLon",
+			  "maxLat",
+			  "maxLon"
+			]
+		  }
+		},
+		"TRANSFORMATIONS": {
+		  "GROUP": [
+			"rooms_shortname"
+		  ],
+		  "APPLY": [
+			{
+			  "maxSeats": {
+				"MAX": "rooms_seats"
+			  }
+			},
+			{
+			  "minSeats": {
+				"MIN": "rooms_seats"
+			  }
+			},
+			{
+			  "minLat": {
+				"MIN": "rooms_lat"
+			  }
+			},
+			{
+			  "maxLat": {
+				"MAX": "rooms_lat"
+			  }
+			},
+			{
+			  "minLon": {
+				"MIN": "rooms_lon"
+			  }
+			},
+			{
+			  "maxLon": {
+				"MAX": "rooms_lon"
+			  }
+			}
+		  ]
+		}
+	  },
+	"errorExpected": false,
+	"expected": [{"rooms_shortname":"OSBO","maxSeats":442,"minSeats":40,"minLat":49.26047,"minLon":-123.24467,"maxLat":49.26047,"maxLon":-123.24467},{"rooms_shortname":"ORCH","maxSeats":72,"minSeats":16,"minLat":49.26048,"minLon":-123.24944,"maxLat":49.26048,"maxLon":-123.24944}]
+}

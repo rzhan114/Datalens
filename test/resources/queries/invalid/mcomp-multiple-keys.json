@@ -1,0 +1,12 @@
+{
+    "title": "multiple keys in comparison",
+    "input": {
+      "WHERE": {
+        "GT": { "sections_avg": 90, "sections_pass": 10 }
+      },
+      "OPTIONS": { "COLUMNS": ["sections_dept"] }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+  }
+  

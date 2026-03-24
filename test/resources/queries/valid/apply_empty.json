@@ -1,0 +1,40 @@
+{
+	"title": "valid_empty_apply",
+	"input": {
+		"WHERE": {
+		  "AND": [
+			{
+			  "IS": {
+				"rooms_furniture": "*es*"
+			  }
+			},
+			{
+			  "LT": {
+				"rooms_seats": 400
+			  }
+			}
+		  ]
+		},
+		"OPTIONS": {
+		  "COLUMNS": [
+			"rooms_shortname",
+			"rooms_lat"
+		  ],
+		  "ORDER": {
+			"dir": "DOWN",
+			"keys": [
+			  "rooms_lat"
+			]
+		  }
+		},
+		"TRANSFORMATIONS": {
+		  "GROUP": [
+			"rooms_shortname",
+			"rooms_lat"
+		  ],
+		  "APPLY": []
+		}
+	  },
+	"errorExpected": false,
+	"expected": [{"rooms_shortname":"IONA","rooms_lat":49.27106},{"rooms_shortname":"ALRD","rooms_lat":49.2699},{"rooms_shortname":"ANSO","rooms_lat":49.26958},{"rooms_shortname":"UCLL","rooms_lat":49.26867},{"rooms_shortname":"BRKX","rooms_lat":49.26862},{"rooms_shortname":"SRC","rooms_lat":49.2683},{"rooms_shortname":"BUCH","rooms_lat":49.26826},{"rooms_shortname":"LASR","rooms_lat":49.26767},{"rooms_shortname":"IBLC","rooms_lat":49.26766},{"rooms_shortname":"AUDX","rooms_lat":49.2666},{"rooms_shortname":"MATH","rooms_lat":49.266463},{"rooms_shortname":"HENN","rooms_lat":49.26627},{"rooms_shortname":"HEBB","rooms_lat":49.2661},{"rooms_shortname":"GEOG","rooms_lat":49.26605},{"rooms_shortname":"LSK","rooms_lat":49.26545},{"rooms_shortname":"FRDM","rooms_lat":49.26541},{"rooms_shortname":"ANGU","rooms_lat":49.26486},{"rooms_shortname":"BIOL","rooms_lat":49.26479},{"rooms_shortname":"WOOD","rooms_lat":49.26478},{"rooms_shortname":"SOWK","rooms_lat":49.2643},{"rooms_shortname":"SPPH","rooms_lat":49.2642},{"rooms_shortname":"FNH","rooms_lat":49.26414},{"rooms_shortname":"PCOH","rooms_lat":49.264},{"rooms_shortname":"SCRF","rooms_lat":49.26398},{"rooms_shortname":"SWNG","rooms_lat":49.26293},{"rooms_shortname":"ESB","rooms_lat":49.26274},{"rooms_shortname":"CEME","rooms_lat":49.26273},{"rooms_shortname":"LSC","rooms_lat":49.26236},{"rooms_shortname":"PHRM","rooms_lat":49.26229},{"rooms_shortname":"CHBE","rooms_lat":49.26228},{"rooms_shortname":"EOSM","rooms_lat":49.26228},{"rooms_shortname":"FORW","rooms_lat":49.26176},{"rooms_shortname":"MCLD","rooms_lat":49.26176},{"rooms_shortname":"DMP","rooms_lat":49.26125},{"rooms_shortname":"MCML","rooms_lat":49.26114},{"rooms_shortname":"ORCH","rooms_lat":49.26048},{"rooms_shortname":"OSBO","rooms_lat":49.26047},{"rooms_shortname":"FSC","rooms_lat":49.26044}]
+}

@@ -1,0 +1,15 @@
+{
+    "title": "non-existent dataset",
+    "input": {
+        "WHERE": {
+            "GT": {
+                "nonexistent_avg": 97
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": ["nonexistent_dept"]
+        }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+}

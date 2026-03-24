@@ -1,0 +1,11 @@
+{
+    "title": "invalid key in col",
+    "input": {
+        "WHERE": {},
+        "OPTIONS": {
+            "COLUMNS": ["sections_avg", "other_dept"] 
+        }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+}

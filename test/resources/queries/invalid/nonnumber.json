@@ -1,0 +1,15 @@
+{
+    "title": "non number",
+    "input": {
+        "WHERE": {
+            "GT": {
+                "sections_avg": "97"
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": ["sections_dept"]
+        }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+}

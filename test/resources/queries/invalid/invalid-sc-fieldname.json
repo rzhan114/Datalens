@@ -1,0 +1,15 @@
+{
+    "title": "invalid skeys",
+    "input": {
+        "WHERE": {
+            "IS": {
+                "sections_avg": "cpsc"
+            }
+        },
+        "OPTIONS": {
+            "COLUMNS": ["sections_dept"]
+        }
+    },
+    "errorExpected": true,
+    "expected": "InsightError"
+}
