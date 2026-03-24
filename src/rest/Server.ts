@@ -66,20 +66,14 @@ export default class Server {
 		// Analytics
 		this.app.get("/api/v1/analytics/:id/industries", (req, res, next) => this.getIndustries(req, res, next));
 		this.app.get("/api/v1/analytics/:id/roles/:industry", (req, res, next) => this.getRoles(req, res, next));
-		this.app.get("/api/v1/analytics/:id/trend/:industry/:jobId", (req, res, next) =>
-			this.getRoleTrend(req, res, next),
-		);
-		this.app.get("/api/v1/analytics/:id/companies/:industry", (req, res, next) =>
-			this.getCompanies(req, res, next),
-		);
-		this.app.get("/api/v1/analytics/:id/company/:name", (req, res, next) =>
-			this.getCompanyListings(req, res, next),
-		);
+		this.app.get("/api/v1/analytics/:id/trend/:industry/:jobId", (req, res, next) => this.getRoleTrend(req, res, next));
+		this.app.get("/api/v1/analytics/:id/companies/:industry", (req, res, next) => this.getCompanies(req, res, next));
+		this.app.get("/api/v1/analytics/:id/company/:name", (req, res, next) => this.getCompanyListings(req, res, next));
 		this.app.get("/api/v1/analytics/:id/salary-benchmark/:role", (req, res, next) =>
-			this.getSalaryBenchmark(req, res, next),
+			this.getSalaryBenchmark(req, res, next)
 		);
 		this.app.get("/api/v1/analytics/:id/competition/:industry", (req, res, next) =>
-			this.getCompetition(req, res, next),
+			this.getCompetition(req, res, next)
 		);
 	}
 

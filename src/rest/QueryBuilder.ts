@@ -52,10 +52,7 @@ export class QueryBuilder {
 	public static getRoleTrendQuery(datasetId: string, industry: string, jobId: string): any {
 		return {
 			WHERE: {
-				AND: [
-					this.buildIndustryFilter(datasetId, industry),
-					this.buildRoleFilter(datasetId, jobId),
-				],
+				AND: [this.buildIndustryFilter(datasetId, industry), this.buildRoleFilter(datasetId, jobId)],
 			},
 			OPTIONS: {
 				COLUMNS: [`${datasetId}_year`, "totalApplicants", "totalRejections", "totalOpenings"],
@@ -100,10 +97,7 @@ export class QueryBuilder {
 			},
 			TRANSFORMATIONS: {
 				GROUP: [`${datasetId}_company`],
-				APPLY: [
-					{ avgSalary: { AVG: `${datasetId}_salary` } },
-					{ listingCount: { COUNT: `${datasetId}_uuid` } },
-				],
+				APPLY: [{ avgSalary: { AVG: `${datasetId}_salary` } }, { listingCount: { COUNT: `${datasetId}_uuid` } }],
 			},
 		};
 	}
@@ -130,13 +124,7 @@ export class QueryBuilder {
 		return {
 			WHERE: this.buildCompanyFilter(datasetId, company),
 			OPTIONS: {
-				COLUMNS: [
-					`${datasetId}_jobId`,
-					`${datasetId}_role`,
-					`${datasetId}_industry`,
-					`${datasetId}_year`,
-					"avgSalary",
-				],
+				COLUMNS: [`${datasetId}_jobId`, `${datasetId}_role`, `${datasetId}_industry`, `${datasetId}_year`, "avgSalary"],
 			},
 			TRANSFORMATIONS: {
 				GROUP: [`${datasetId}_jobId`, `${datasetId}_role`, `${datasetId}_industry`, `${datasetId}_year`],
@@ -209,8 +197,7 @@ export class QueryBuilder {
 				const avgSalary = parseFloat((item.avgSalary || 0).toFixed(1));
 				const openings = item.totalOpenings || 0;
 				const applicants = item.totalApplicants || 0;
-				const acceptanceRate =
-					applicants > 0 ? parseFloat(((openings / applicants) * 100).toFixed(2)) : 0;
+				const acceptanceRate = applicants > 0 ? parseFloat(((openings / applicants) * 100).toFixed(2)) : 0;
 				return { company, avgSalary, openings, applicants, acceptanceRate };
 			})
 			.filter((c) => c.company?.trim() && c.applicants > 0)

@@ -237,7 +237,7 @@ export class RoomHelper implements IDatasetHelper<Office> {
 		headcount: number,
 		type: string,
 		remote: string,
-		url: string,
+		url: string
 	): Office {
 		return {
 			companyName: company.companyName,
